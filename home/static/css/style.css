@@ -1,0 +1,202 @@
+@charset "utf-8";
+
+#myProgress {
+  width: 100%;
+  border-style: solid;
+  border-color : gray;
+  background-color: #FFFFFF;
+}
+
+#myBar {
+  width: 0%;
+  height: 30px;
+  background-color: #28E7FF;
+}
+
+#loading {
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  position: fixed;
+  display: block;
+  opacity: 0.90;
+  background: white;
+  z-index: 99;
+  text-align: center;
+}
+
+.loading_image {
+  position: sticky;
+  top: 50%;
+  font-weight: bold;
+  font-size: 15px;
+  font-style: italic;
+  color:#807e7e;
+  text-shadow: -2px 0 rgb(255, 254, 254), 0 2px rgb(255, 255, 255), 2px 0 #fff, 0 -2px #fff;
+}
+
+@media screen and (max-width:960px) { 
+  .title{
+    background: url("../../images/title.jpg");
+    background-repeat : no-repeat;
+    background-size : cover;
+    height: 100vh;
+  }
+}
+@media screen and (min-width:961px) { 
+  .title{
+    background: url("../../images/title_w2.png");
+    background-repeat : no-repeat;
+    background-size : cover;
+    height: 100vh;
+  }
+}
+.font-footer{
+  font-style: italic;
+  color:#faf8f8;
+  position: fixed;
+  top : 95%;
+  right : 3%;
+  text-shadow: 0 0 2px rgb(2, 2, 2);
+
+}
+
+@media screen and (max-width:960px) { 
+  .login {
+    background: url("../../images/loginField.png");
+    background-repeat : no-repeat;
+    background-position: center;
+    background-size: 85%;
+    height: 60vh;
+    position: sticky;
+    top: 70%;
+    font-weight: bold;
+    font-size: 15px;
+    font-style: italic;
+    color:#807e7e;
+    text-shadow: -2px 0 rgb(255, 254, 254), 0 2px rgb(255, 255, 255), 2px 0 #fff, 0 -2px #fff;
+  } 
+  .form-control {
+    opacity: 0.5;
+    border-width:4px;
+    border-color:#ffffff;
+    font-size: 4vw;
+  }
+
+  .login-form {
+    height: 25vh;
+    font-size : 1.7vh;
+  }
+
+  .login-button {
+    transition: opacity 500ms linear;
+    font-size : 3vw;
+    padding-left: 9vw;
+    padding-right: 9vw;
+    padding-top: 0.5vh;
+    padding-bottom: 0.5vh;
+    text-align: center;
+    border-style: none;
+    background: url("../../images/loginButton.png");
+    opacity: 0.5;
+    color: #f8f29d;
+    font-weight: bold;
+    font-style: italic;
+    border-radius: 40px 80px / 80px 40px;
+    text-shadow: -2px 0 rgb(24, 24, 24), 0 2px rgb(22, 22, 22), 2px 0 rgb(12, 12, 12), 0 -2px rgb(22, 22, 22);
+  }
+
+}
+
+@media screen and (min-width:961px) {
+  .login {
+    background: url("../../images/loginField_w.png");
+    background-repeat : no-repeat;
+    background-position: center;
+    background-size: 40%;
+    height: 60vh;
+    position: sticky;
+    top: 70%;
+    font-weight: bold;
+    font-size: 40px;
+    font-style: italic;
+    color:#807e7e;
+    text-shadow: -2px 0 rgb(255, 254, 254), 0 2px rgb(255, 255, 255), 2px 0 #fff, 0 -2px #fff;
+  }
+
+  .form-control {
+    opacity: 0.8;
+    border-width:4px;
+    border-color:#ffffff;
+    font-size: 1vw;
+  }
+
+  .login-form {
+    height: 25vh;
+    font-size : 1.7vh;
+  }
+
+  .login-button {
+    transition: opacity 500ms linear;
+    font-size : 2vw;
+    padding-left: 9vw;
+    padding-right: 9vw;
+    padding-top: 0.5vh;
+    padding-bottom: 0.5vh;
+    text-align: center;
+    border-style: none;
+    background: url("../../images/loginButton.png");
+    opacity: 0.5;
+    color: #f8f29d;
+    font-weight: bold;
+    font-style: italic;
+    border-radius: 40px 80px / 80px 40px;
+    text-shadow: -2px 0 rgb(24, 24, 24), 0 2px rgb(22, 22, 22), 2px 0 rgb(12, 12, 12), 0 -2px rgb(22, 22, 22);
+  }
+}
+
+.login-form-errors {
+  position: sticky;
+  top : 87%;
+  color:#f7c7d5;
+  font-weight: bold;
+  font-size : 2.0vh;
+  text-shadow: -2px 0 rgb(24, 24, 24), 0 2px rgb(22, 22, 22), 2px 0 rgb(12, 12, 12), 0 -2px rgb(22, 22, 22);
+}
+
+.form-control:focus {
+  border-color: #f8f29d;
+  box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.075) inset, 0px 0px 8px rgba(247, 241, 247, 0.5);
+  opacity: 1;
+}
+
+.login-button:hover {
+  color: #f8f8f0;
+  text-shadow: -2px 0 rgb(24, 24, 24), 0 2px rgb(22, 22, 22), 2px 0 rgb(12, 12, 12), 0 -2px rgb(22, 22, 22);
+  opacity: 1;
+  border-radius: 40px 80px / 80px 40px;
+  border-style: none;
+}
+
+.fa-user-plus{
+  position: relative;
+  color: #5f2e05;
+  opacity: 0.5;
+  border-bottom-style: solid;
+  border-color: #ffffff;
+  top: -70%;
+  left: 65%;
+  font-size: 170%;
+  transition: color 500ms linear;
+}
+
+.fa-user-plus:hover{
+  position: relative;
+  color: #15c0eb;
+  border-bottom-style: solid;
+  border-color: #ffffff;
+  top: -70%;
+  left: 65%;
+  font-size: 170%;
+}
