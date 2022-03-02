@@ -1,0 +1,97 @@
+<!--タイトル画面-->
+
+{% include 'layouts/app.html' %}
+{% load static%}
+<link rel="stylesheet" href="{% static 'css/title.css/' %}">
+
+<!--ローディング画面-->
+<div id="loading">
+    <div class = "loading_image">
+    <img src="{% static "images/loading_winter.gif"%}" width="5%" height="5%">
+    <p>&nbsp;Loading...</p>
+    </div>
+</div>
+
+<div class="title">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/JQuery-Snowfall/1.7.4/snowfall.jquery.min.js"></script>
+    <script>
+        $.loading = function(){
+            window.addEventListener("load",function() {
+                setTimeout(function(){
+                    $('#loading').hide();
+                    const div = document.querySelector('body')
+                    div.animate([{opacity: '0'}, {opacity: '1'}], 2500)
+                    //loading画面hide , fade in効果
+                    $(document).ready(function(){
+                        $(document).snowfall({
+                            deviceorientation : true, 
+                            image: "../../static/images/flake.png",
+                            minSize: 1, 
+                            maxSize:20,
+                            maxSpeed : 5,
+                            flakeCount : 50
+                        })
+                    })
+                    sessionStorage.setItem("loading", "check");
+                },3000)
+            })
+        }
+
+        if(!sessionStorage.getItem("loading")){
+            $.loading();
+        // 1度だけ実行する処理内容
+        }else{
+            $('#loading').hide();
+            $(document).ready(function(){
+                $(document).snowfall({
+                    deviceorientation : true, 
+                    image: "../../static/images/flake.png",
+                    minSize: 1, 
+                    maxSize:20,
+                    maxSpeed : 5,
+                    flakeCount : 50
+                });
+            });
+        // 1度実行された後の処理内容
+        }
+    </script>
+
+<!--ログイン枠-->
+    <div class="login">
+        <span class = "login d-flex align-items-center justify-content-center">
+            {% include 'login.html'%}  
+        </span>
+    </div>
+
+    <div class="login-form-errors text-center">
+        {% include "layouts/form_errors.html"%}
+    </div>
+
+    <script>
+        $('.login').hide();
+
+        loginShowTimer = 0;
+
+        $.loginShow = function(){
+            $(document).one('click',(function() {
+                $('.login').show();
+                const div = document.querySelector('.login')
+                div.animate([{opacity: '0'}, {opacity: '1'}], 1000)
+                sessionStorage.setItem("loginShow", "check");
+            }))
+        }
+
+        if(!sessionStorage.getItem("loading")){
+            setTimeout(function(){                        
+                if(!sessionStorage.getItem("loginShow") && sessionStorage.getItem("loading")){
+                    $.loginShow();
+                }
+            },3100)
+        }else if(sessionStorage.getItem("loginShow")){
+            $('.login').show();
+        }else{
+            $.loginShow();
+        }
+    </script>
+
+{% include 'layouts/footer.html' %}

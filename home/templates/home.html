@@ -1,27 +1,15 @@
-<!DOCTYPE html>
-<html lang="ja">
-    <head>
-        <meta charset="utf-8">
-        <title>Pygame Library</title>
-        <meta name="viewport" content="width=device-width, height=device-height initial-scale=1, shrink-to-fit=no">
-        <link rel="shortcut icon" href="#">
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
+<!--ログイン後 ホーム画面-->
 
-    </head>
+{% include 'layouts/app.html' %}
 
-    <body>
-        <script defer src="https://use.fontawesome.com/releases/v5.7.2/js/all.js"></script>
-        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-        <h2>result 페이지</h2>
-     
-        <button onclick="location.href='{% url 'home:login' %}'" id = "logout" class="btn btn-primary">仮ログアウト</button>
-        <script>
-        $( "#logout" ).click(function() {
-            localStorage.clear("loading");
-            localStorage.clear("loginShow");
-          });
-        </script>
+<h2>result 페이지</h2>
 
-    </body>
+    <button onclick="location.href='{% url 'home:login' %}'" id = "logout" class="btn btn-primary">仮ログアウト</button>
+    <script>
+    $( "#logout" ).click(function() {
+        sessionStorage.clear("loading");
+        sessionStorage.clear("loginShow");
+        });
+    </script>
 
-</html>
+{% include 'layouts/footer.html' %}
