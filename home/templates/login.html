@@ -1,22 +1,21 @@
 <!--ログイン枠-->
 
 <div class ="row login-form">
+    <i class="fas fa-user-plus"></i>
     <form method="post" class="post-form">
         {% csrf_token %}
-        <div class="form-group">
+        <div class="login-form-group">
             <label for="username">Username</label>
-            <i class="fas fa-user-plus"></i>
             <input type="text" class="form-control" name="username" id="username"
             value = "{{ form.username.value|default_if_none:''}}" required>
         </div>
-
-        <div class="form-gorup">
+        <div class="login-form-group">
             <label for="password">Password</label>
             <input type="password" class="form-control" name="password" id="password"
             value="{{ form.password.value|default_if_none:''}}">
         </div>
-        <div class= "text-center align-middle">
-            <button type="submit" class="btn login-button mt-3">Login</button>
+        <div class= "login-button-frame">
+            <button type="submit" class="btn login-button">Login</button>
         </div>
     </form>
 </div>

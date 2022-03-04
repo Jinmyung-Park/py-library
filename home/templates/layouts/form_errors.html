@@ -1,12 +1,6 @@
-<!--エラーメッセージ共通-->>
+<!--エラーメッセージ共通-->
 
-{% if form.errors %}
-    {% for field in form %}
-        {% for error in field.errors %}
-            {{ field.label }}
-            {{ error }}
-        {% endfor %}
-    {% endfor %}
+{% if form.non_field_errors %}
     {% for error in form.non_field_errors %}
         {{ error }}
     {% endfor %}

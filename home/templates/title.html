@@ -59,12 +59,11 @@
 <!--ログイン枠-->
     <div class="login">
         <span class = "login d-flex align-items-center justify-content-center">
-            {% include 'login.html'%}  
+            {% include 'login.html'%}
         </span>
-    </div>
-
-    <div class="login-form-errors text-center">
-        {% include "layouts/form_errors.html"%}
+        <div class="login-form-errors">
+            {% include "layouts/form_errors.html"%}
+        </div>
     </div>
 
     <script>
