@@ -85,7 +85,7 @@
     font-size: 100%;
     margin-bottom: 7vh;
   }
-  .login-form {
+  .login-form,.register-form {
     position: absolute;
     top: 20%;
     width: 60%;
@@ -110,10 +110,35 @@
     border-radius: 40px 80px / 80px 40px;
     text-shadow: -2px 0 rgb(24, 24, 24), 0 2px rgb(22, 22, 22), 2px 0 rgb(12, 12, 12), 0 -2px rgb(22, 22, 22);
   }
+  .register-button {
+    transition: opacity 500ms linear;
+    font-size : 100%;
+    height: 5vh;
+    width: 120%;
+    padding-left: 9vw;
+    padding-right: 9vw;
+    padding-top: 0.5vh;
+    padding-bottom: 0.5vh;
+    text-align: center;
+    border-style: none;
+    background: url("../../images/loginButton.png");
+    opacity: 0.5;
+    color: #f8f29d;
+    font-weight: bold;
+    font-style: italic;
+    border-radius: 40px 80px / 80px 40px;
+    text-shadow: -2px 0 rgb(24, 24, 24), 0 2px rgb(22, 22, 22), 2px 0 rgb(12, 12, 12), 0 -2px rgb(22, 22, 22);
+  }
   .login-button-frame {
     position: absolute;
     top:50%;
     left:25%;
+    width: 50%;
+  }
+  .register-button-frame {
+    position: absolute;
+    top:50%;
+    left:22%;
     width: 50%;
   }
 }
@@ -143,7 +168,7 @@
     font-size: 100%;
     margin-bottom: 7vh;
   }
-  .login-form {
+  .login-form,.register-form {
     position: absolute;
     top: 20%;
     width: 60%;
@@ -168,10 +193,35 @@
     border-radius: 40px 80px / 80px 40px;
     text-shadow: -2px 0 rgb(24, 24, 24), 0 2px rgb(22, 22, 22), 2px 0 rgb(12, 12, 12), 0 -2px rgb(22, 22, 22);
   }
+  .register-button {
+    transition: opacity 500ms linear;
+    font-size : 100%;
+    height: 100%;
+    width: 120%;
+    padding-left: 9vw;
+    padding-right: 9vw;
+    padding-top: 0.5vh;
+    padding-bottom: 0.5vh;
+    text-align: center;
+    border-style: none;
+    background: url("../../images/loginButton.png");
+    opacity: 0.5;
+    color: #f8f29d;
+    font-weight: bold;
+    font-style: italic;
+    border-radius: 40px 80px / 80px 40px;
+    text-shadow: -2px 0 rgb(24, 24, 24), 0 2px rgb(22, 22, 22), 2px 0 rgb(12, 12, 12), 0 -2px rgb(22, 22, 22);
+  }
   .login-button-frame {
     position: absolute;
     top:50%;
     left: 25%;
+    width: 50%;
+  }
+  .register-button-frame {
+    position: absolute;
+    top:50%;
+    left: 22%;
     width: 50%;
   }
 }
@@ -201,7 +251,7 @@
   border-style: none;
 }
 
-.fa-user-plus{
+.fa-user-plus,.fa-arrow-rotate-left{
   position: absolute;
   color: #5f2e05;
   opacity: 0.5;
@@ -213,7 +263,7 @@
   transition: color 500ms linear;
 }
 
-.fa-user-plus:hover{
+.fa-user-plus:hover,.fa-arrow-rotate-left:hover{
   position: absolute;
   color: #15c0eb;
   border-bottom-style: solid;

@@ -14,7 +14,7 @@
 
 <div class="title">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/JQuery-Snowfall/1.7.4/snowfall.jquery.min.js"></script>
-    <script>
+    <script>        
         $.loading = function(){
             window.addEventListener("load",function() {
                 setTimeout(function(){
@@ -58,18 +58,20 @@
 
 <!--ログイン枠-->
     <div class="login">
-        <span class = "login d-flex align-items-center justify-content-center">
+        <span class = "d-flex align-items-center justify-content-center">
             {% include 'login.html'%}
+            {% include 'register.html'%}
         </span>
         <div class="login-form-errors">
             {% include "layouts/form_errors.html"%}
         </div>
     </div>
 
+    <script src="../../static/js/register.js"></script>
+<!--ログイン枠登場効果 js-->
     <script>
         $('.login').hide();
-
-        loginShowTimer = 0;
+        $('.register-form').hide();
 
         $.loginShow = function(){
             $(document).one('click',(function() {
@@ -81,11 +83,13 @@
         }
 
         if(!sessionStorage.getItem("loading")){
-            setTimeout(function(){                        
-                if(!sessionStorage.getItem("loginShow") && sessionStorage.getItem("loading")){
-                    $.loginShow();
-                }
-            },3100)
+            $(document).ready(function(){
+                setTimeout(function(){
+                    if(!sessionStorage.getItem("loginShow") && sessionStorage.getItem("loading")){
+                        $.loginShow();
+                    }
+                },3050)
+            });
         }else if(sessionStorage.getItem("loginShow")){
             $('.login').show();
         }else{
