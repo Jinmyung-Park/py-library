@@ -74,27 +74,29 @@
         $('.register-form').hide();
 
         $.loginShow = function(){
-            $(document).one('click',(function() {
+            $(document).one('click',function(){
                 $('.login').show();
                 const div = document.querySelector('.login')
                 div.animate([{opacity: '0'}, {opacity: '1'}], 1000)
                 sessionStorage.setItem("loginShow", "check");
-            }))
+            })
         }
 
-        if(!sessionStorage.getItem("loading")){
-            $(document).ready(function(){
+        console.log(sessionStorage.getItem("loading"))
+        
+        $(document).ready(function(){
+            if(!sessionStorage.getItem("loading")){
                 setTimeout(function(){
-                    if(!sessionStorage.getItem("loginShow") && sessionStorage.getItem("loading")){
+                    if(sessionStorage.getItem("loginShow") == null && sessionStorage.getItem("loading") == "check"){
                         $.loginShow();
                     }
-                },3050)
-            });
-        }else if(sessionStorage.getItem("loginShow")){
-            $('.login').show();
-        }else{
-            $.loginShow();
-        }
+                },3050);
+            }else if(sessionStorage.getItem("loginShow")){
+                $('.login').show();
+            }else{
+                $.loginShow();
+            }
+        });
     </script>
 
 {% include 'layouts/footer.html' %}
