@@ -58,13 +58,8 @@
 
 <!--ログイン枠-->
     <div class="login">
-        <span class = "d-flex align-items-center justify-content-center">
             {% include 'login.html'%}
             {% include 'register.html'%}
-        </span>
-        <div class="login-form-errors">
-            {% include "layouts/form_errors.html"%}
-        </div>
     </div>
 
     <script src="../../static/js/register.js"></script>
@@ -93,6 +88,11 @@
                 },3050);
             }else if(sessionStorage.getItem("loginShow")){
                 $('.login').show();
+                //ユーザ登録画面,ログイン画面のフラグ判定
+                if(sessionStorage.getItem("registerFlg")%2==0){
+                    $('.login-form').hide();
+                    $('.register-form').show();
+                }
             }else{
                 $.loginShow();
             }

@@ -84,7 +84,6 @@ DATABASES = {
 
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
-
 AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
@@ -127,6 +126,8 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+LOGIN_URL = "home:login"
+LOGIN_REDIRECT_URL = "home:home"
+LOGOUT_REDIRECT_URL = "home:login"
 
-# ログイン成功時のURL
-LOGIN_REDIRECT_URL = '/home'
+SESSION_COOKIE_AGE = 3600

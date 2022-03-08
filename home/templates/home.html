@@ -1,15 +1,13 @@
 <!--ログイン後 ホーム画面-->
 
 {% include 'layouts/app.html' %}
+<script src="../../static/js/home.js"></script>
 
 <h2>result 페이지</h2>
+<div>hello! {{ user.username }}<div>
 
-    <button onclick="location.href='{% url 'home:login' %}'" id = "logout" class="btn btn-primary">仮ログアウト</button>
-    <script>
-    $( "#logout" ).click(function() {
-        sessionStorage.clear("loading");
-        sessionStorage.clear("loginShow");
-        });
-    </script>
+
+    <button onclick="location.href='{% url 'home:logout' %}'" id = "logout" class="btn btn-primary">仮ログアウト</button>
+
 
 {% include 'layouts/footer.html' %}

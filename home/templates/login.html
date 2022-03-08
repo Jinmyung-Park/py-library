@@ -1,8 +1,8 @@
 <!--ログイン枠-->
 
-<div class ="row login-form">
+<div class ="login-form">
     <span id = "registerIcon"><i class="fas fa-user-plus"></i></span>
-    <form method="post" class="post-form">
+    <form method="post" class="post-form" action="{% url 'home:login' %}">
         {% csrf_token %}
         <div class="login-form-group">
             <label for="username">Username</label>
@@ -12,10 +12,14 @@
         <div class="login-form-group">
             <label for="password">Password</label>
             <input type="password" class="form-control" name="password" id="password"
-            value="{{ form.password.value|default_if_none:''}}">
+            value="{{ form.password.value|default_if_none:''}}" required>
         </div>
-        <div class= "login-button-frame">
+        <div class="login-button-frame">
             <button type="submit" class="btn login-button">Login</button>
         </div>
     </form>
+</div>
+
+<div class="login-form-errors">
+    {% include "layouts/login_errors.html"%}
 </div>

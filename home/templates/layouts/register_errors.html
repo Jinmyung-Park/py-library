@@ -1,0 +1,11 @@
+<!--会員登録エラー1個だけ表示-->
+
+{% if form.errors.username %}
+    {{ form.errors.username }}
+{% elif form.errors.email %}
+    {{ form.errors.email }}
+{% elif form.errors.password %}
+    {{ form.errors.password }}
+{% elif form.errors.password2 %}
+    {{ form.errors.password2 }}
+{% endif %}
