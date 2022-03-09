@@ -96,10 +96,7 @@
     $(document).ready(function () {
       if (!sessionStorage.getItem("loading")) {
         setTimeout(function () {
-          if (
-            sessionStorage.getItem("loginShow") == null &&
-            sessionStorage.getItem("loading")
-          ) {
+          if (!sessionStorage.getItem("loginShow")) {
             $.loginShow();
           }
         }, 3050);
