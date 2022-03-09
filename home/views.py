@@ -7,16 +7,21 @@ from django.contrib.auth import authenticate, login
 from django.contrib.auth.forms import UserCreationForm
 from django.views.generic import TemplateView, CreateView
 from django.contrib.auth.decorators import login_required
-
-def title(request):
-    if request.user.is_authenticated:
-        return render(request, 'home.html',{})
-    else:
-        return redirect('home:login')
+from django.contrib.auth.views import LoginView, LogoutView
 
 @login_required
 def home(request):
     return render(request, 'home.html',{})
+
+class Login(LoginView):
+    
+    template_name = "title.html"
+
+    def get(self,request):
+        if request.user.is_authenticated:
+            return redirect('home:home')
+        else:
+            return render(request,'title.html')
 
 def signup(request):
     if request.method == 'POST':
