@@ -4,10 +4,17 @@
 <script src="../../static/js/home.js"></script>
 
 <h2>result 페이지</h2>
-<div>hello! {{ user.username }}<div>
+<div>
+  hello! {{ user.username }}
+  <div>
+    <button
+      onclick="location.href='{% url 'home:logout' %}'"
+      id="logout"
+      class="btn btn-primary"
+    >
+      仮ログアウト
+    </button>
 
-
-    <button onclick="location.href='{% url 'home:logout' %}'" id = "logout" class="btn btn-primary">仮ログアウト</button>
-
-
-{% include 'layouts/footer.html' %}
+    {% include 'layouts/footer.html' %}
+  </div>
+</div>

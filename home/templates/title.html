@@ -1,100 +1,120 @@
 <!--タイトル画面-->
 
-{% include 'layouts/app.html' %}
-{% load static%}
-<link rel="stylesheet" href="{% static 'css/title.css/' %}">
+{% include 'layouts/app.html' %} {% load static%}
+<link rel="stylesheet" href="{% static 'css/title.css/' %}" />
 
 <!--ローディング画面-->
 <div id="loading">
-    <div class = "loading_image">
+  <div class="loading_image">
     <img src="{% static "images/loading_winter.gif"%}" width="5%" height="5%">
     <p>&nbsp;Loading...</p>
-    </div>
+  </div>
 </div>
 
 <div class="title">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/JQuery-Snowfall/1.7.4/snowfall.jquery.min.js"></script>
-    <script>        
-        $.loading = function(){
-            window.addEventListener("load",function() {
-                setTimeout(function(){
-                    $('#loading').hide();
-                    const div = document.querySelector('body')
-                    div.animate([{opacity: '0'}, {opacity: '1'}], 2500)
-                    //loading画面hide , fade in効果
-                    $(document).ready(function(){
-                        $(document).snowfall({
-                            deviceorientation : true, 
-                            image: "../../static/images/flake.png",
-                            minSize: 1, 
-                            maxSize:20,
-                            maxSpeed : 5,
-                            flakeCount : 50
-                        })
-                    })
-                    sessionStorage.setItem("loading", "check");
-                },3000)
-            })
-        }
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/JQuery-Snowfall/1.7.4/snowfall.jquery.min.js"></script>
+  <script>
+    {% comment %} session満了時間設定 {% endcomment %}
+    let now = new Date().getTime();
 
-        if(!sessionStorage.getItem("loading")){
-            $.loading();
-        // 1度だけ実行する処理内容
-        }else{
-            $('#loading').hide();
-            $(document).ready(function(){
-                $(document).snowfall({
-                    deviceorientation : true, 
-                    image: "../../static/images/flake.png",
-                    minSize: 1, 
-                    maxSize:20,
-                    maxSpeed : 5,
-                    flakeCount : 50
-                });
+    var sessionCheck = {
+        check : "check",
+        expiredSession : now + (5*60000)}
+
+    {% comment %} 満了時にsessionStorage 削除 {% endcomment %}
+    if(sessionStorage.getItem("loading")){
+        var sessionCheckFlg = JSON.parse(sessionStorage.getItem("loading")).expiredSession;
+        if (sessionCheckFlg < new Date().getTime()){
+            sessionStorage.removeItem("loading");
+            sessionStorage.removeItem("loginShow");
+            sessionStorage.removeItem("registerFlg");
+            console.log('expired');
+        }
+    }
+
+    $.loading = function () {
+      window.addEventListener("load", function () {
+        setTimeout(function () {
+          $("#loading").hide();
+          const div = document.querySelector("body");
+          div.animate([{ opacity: "0" }, { opacity: "1" }], 2500);
+          //loading画面hide , fade in効果
+          $(document).ready(function () {
+            $(document).snowfall({
+              deviceorientation: true,
+              image: "../../static/images/flake.png",
+              minSize: 1,
+              maxSize: 20,
+              maxSpeed: 5,
+              flakeCount: 50,
             });
-        // 1度実行された後の処理内容
-        }
-    </script>
+          });
+          sessionStorage.setItem("loading",JSON.stringify(sessionCheck));
+        }, 3000);
+      });
+    };
 
-<!--ログイン枠-->
-    <div class="login">
-            {% include 'login.html'%}
-            {% include 'register.html'%}
-    </div>
-
-    <script src="../../static/js/register.js"></script>
-<!--ログイン枠登場効果 js-->
-    <script>
-        $('.login').hide();
-        $('.register-form').hide();
-
-        $.loginShow = function(){
-            $(document).one('click',function(){
-                $('.login').show();
-                const div = document.querySelector('.login')
-                div.animate([{opacity: '0'}, {opacity: '1'}], 1000)
-                sessionStorage.setItem("loginShow", "check");
-            })
-        }
-        
-        $(document).ready(function(){
-            if(!sessionStorage.getItem("loading")){
-                setTimeout(function(){
-                    if(sessionStorage.getItem("loginShow") == null && sessionStorage.getItem("loading") == "check"){
-                        $.loginShow();
-                    }
-                },3050);
-            }else if(sessionStorage.getItem("loginShow")){
-                $('.login').show();
-                //ユーザ登録画面,ログイン画面のフラグ判定
-                if(sessionStorage.getItem("registerFlg")%2==0){
-                    $('.login-form').hide();
-                    $('.register-form').show();
-                }
-            }else{
-                $.loginShow();
-            }
+    if (!sessionStorage.getItem("loading")) {
+      $.loading();
+      // 1度だけ実行する処理内容
+    } else {
+      $("#loading").hide();
+      $(document).ready(function () {
+        $(document).snowfall({
+          deviceorientation: true,
+          image: "../../static/images/flake.png",
+          minSize: 1,
+          maxSize: 20,
+          maxSpeed: 5,
+          flakeCount: 50,
         });
-    </script>
+      });
+      // 1度実行された後の処理内容
+    }
+  </script>
 
-{% include 'layouts/footer.html' %}
+  <!--ログイン枠-->
+  <div class="login">
+    {% include 'login.html'%} {% include 'register.html'%}
+  </div>
+
+  <script src="../../static/js/register.js"></script>
+  <!--ログイン枠登場効果 js-->
+  <script>
+    $(".login").hide();
+    $(".register-form").hide();
+
+    $.loginShow = function () {
+      $(document).one("click", function () {
+        $(".login").show();
+        const div = document.querySelector(".login");
+        div.animate([{ opacity: "0" }, { opacity: "1" }], 1000);
+        sessionStorage.setItem("loginShow", JSON.stringify(sessionCheck));
+      });
+    };
+
+    $(document).ready(function () {
+      if (!sessionStorage.getItem("loading")) {
+        setTimeout(function () {
+          if (
+            sessionStorage.getItem("loginShow") == null &&
+            sessionStorage.getItem("loading")
+          ) {
+            $.loginShow();
+          }
+        }, 3050);
+      } else if (sessionStorage.getItem("loginShow")) {
+        $(".login").show();
+        //ユーザ登録画面,ログイン画面のフラグ判定
+        if (sessionStorage.getItem("registerFlg") % 2 == 0) {
+          $(".login-form").hide();
+          $(".register-form").show();
+        }
+      } else {
+        $.loginShow();
+      }
+    });
+  </script>
+
+  {% include 'layouts/footer.html' %}
+</div>

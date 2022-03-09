@@ -1,35 +1,63 @@
 <!--会員登録枠-->
 
-<div class = "register-form">
-    <span id = "returnIcon"><i class="fa-solid fa-arrow-rotate-left"></i></span>
-        <form method="post" class="post-form" action="{% url 'home:signup' %}">
-            {% csrf_token %}
-            <div class="register-form-group">
-                <label for="username">Username</label>
-                <input type="text" class="form-control" name="username" id="username" style="height:5%;"
-                       value="{{ form.username.value|default_if_none:'' }}" required>
-            </div>
-            <div class="register-form-group">
-                <label for="email">E-mail</label>
-                <input type="text" class="form-control" name="email" id="email" style="height:5%;"
-                       value="{{ form.email.value|default_if_none:'' }}" required>
-            </div>
-            <div class="register-form-group">
-                <label for="password1">Password</label>
-                <input type="password" class="form-control" name="password1" id="password1" style="height:5%;"
-                       value="{{ form.password1.value|default_if_none:'' }}" required>
-            </div>
-            <div class="register-form-group">
-                <label for="password2">Password Confirm</label>
-                <input type="password" class="form-control" name="password2" id="password2" style="height:5%;"
-                       value="{{ form.password2.value|default_if_none:'' }}" required>
-            </div>
-            <div class="register-button-frame">
-                <button type="submit" class="btn register-button">Register</button>
-            </div>
-        </form>
+<div class="register-form">
+  <span id="returnIcon"><i class="fa-solid fa-arrow-rotate-left"></i></span>
+  <form method="post" class="post-form" action="{% url 'home:signup' %}">
+    {% csrf_token %}
+    <div class="register-form-group">
+      <label for="username">Username</label>
+      <input
+        type="text"
+        class="form-control"
+        name="username"
+        id="username"
+        style="height: 5%"
+        value="{{ form.username.value|default_if_none:'' }}"
+        required
+      />
+    </div>
+    <div class="register-form-group">
+      <label for="email">E-mail</label>
+      <input
+        type="text"
+        class="form-control"
+        name="email"
+        id="email"
+        style="height: 5%"
+        value="{{ form.email.value|default_if_none:'' }}"
+        required
+      />
+    </div>
+    <div class="register-form-group">
+      <label for="password1">Password</label>
+      <input
+        type="password"
+        class="form-control"
+        name="password1"
+        id="password1"
+        style="height: 5%"
+        value="{{ form.password1.value|default_if_none:'' }}"
+        required
+      />
+    </div>
+    <div class="register-form-group">
+      <label for="password2">Password Confirm</label>
+      <input
+        type="password"
+        class="form-control"
+        name="password2"
+        id="password2"
+        style="height: 5%"
+        value="{{ form.password2.value|default_if_none:'' }}"
+        required
+      />
+    </div>
+    <div class="register-button-frame">
+      <button type="submit" class="btn register-button">Register</button>
+    </div>
+  </form>
 </div>
 
 <div class="register-form-errors">
-    {% include "layouts/register_errors.html"%}
+  {% include "layouts/register_errors.html"%}
 </div>
